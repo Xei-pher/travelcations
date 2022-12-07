@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const bcrypt = require('bcrypt');
 const path = require('path');
-const session = require('express-session');
+const session = require('cookie-session');
 const multer = require('multer');
 //FOR SESSIONS
 const currentUser = {username:"",password:"",firstname:"",lastname:"", email:"", bio:"", postCount:0,profilePic:"", dateJoin:""};
@@ -12,6 +12,13 @@ const newPost = {postID:0 ,title:"", rating:0, date:"", content:"", image:""};
 const currPost = {postID:0 ,title:"", rating:0, date:"", content:"", image:""};
 //FOR IMAGE UPLOADS
 
+app.use(
+  session({
+    name: 'session',
+    secret: 'cookie',
+    maxAge: 24 * 60 * 60 * 1000
+  })
+);
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'public/images')
