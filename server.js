@@ -207,7 +207,7 @@ app.get('/viewpost/:postID', (req, res) => {
     }
 });
 });
-app.listen(3000, () => console.log('Listening on port 3000'));
+app.listen(process.env.PORT || 3000, () => console.log('Listening on port 3000'));
 
 /*SIGNUP*/
 app.post("/signupuser", (req, res)=>{
@@ -416,12 +416,7 @@ app.post("/searchpost", (req, res)=>{
     });
   });
 // CONNECT
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'dlsu',
-  database : 'travelcations',
-});
+var connection = mysql.createConnection('mysql://root:qit97mz2dKimpH0v2xuY@containers-us-west-151.railway.app:5538/railway');
 
 connection.connect(function(err) {
 if (err) {
