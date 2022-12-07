@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link rel = "stylesheet" href="/public/style.css">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<title>Home Page</title>
+</head>
+<script>
+    function changeBohol1(){
+        var image = document.getElementById("featured");
+        image.src = "/public/staticimages/Bohol1.jpg"
+    }
+    function changeBohol2(){
+        var image = document.getElementById("featured");
+        image.src = "/public/staticimages/Bohol2.jpg"
+    }
+    function changeBora2(){
+        var image = document.getElementById("featured");
+        image.src = "/public/staticimages/Boracay2.jpg"
+    }
+    function changeBora1(){
+        var image = document.getElementById("featured");
+        image.src = "/public/staticimages/Boracay1.jpg"
+    }
+    function changeNido1(){
+        var image = document.getElementById("featured");
+        image.src = "/public/staticimages/ElNido1.png"
+    }
+    function changeNido2(){
+        var image = document.getElementById("featured");
+        image.src = "/public/staticimages/ElNido2.jpg"
+    }
+    function changeMnl1(){
+        var image = document.getElementById("featured");
+        image.src = "/public/staticimages/Manila1.jpg"
+    }
+    function changeMnl2(){
+        var image = document.getElementById("featured");
+        image.src = "/public/staticimages/Manila2.jpg"
+    }
+    function changeSia1(){
+        var image = document.getElementById("featured");
+        image.src = "/public/staticimages/Siargao1.jpg"
+    }
+</script>
+<body>
+    <nav>
+        <div class="menu-icon">
+        </div>
+        <div class="logo">
+            <img id ="logo" src = "/public/staticimages/logo_transparent.png" >
+        </div>
+        <div class="nav-items">
+        <form action="/homepage1" method="post">
+           <li><button type="submit">Home</button></li>
+        </form>
+        </div>
+        <div class="nav-items">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <form action="/aboutpage2" method="post">
+                <li><button type="submit">About Us</button></li>
+                </form>
+            <form action="/loginpage" method="post">
+            <li><button type="submit">Sign In</button></li>
+            </form>
+            <form action="/signuppage" method="post">
+            <li><button type="submit">Sign Up</button></li>
+            </form>
+         </div>
+     </nav>  
+    
+
+   
+    <div class = "column main">
+        <!-- <img src="Media/Locations/Bohol1.jpg"> -->
+        <span class ="btns">
+        <ul>
+            <li onclick="changeBohol2()">
+                <img id ="bohol2" src="/public/staticimages/Bohol2.jpg">
+            </li>
+            <li onclick="changeBora2()">
+                <img id ="boracay2" src="/public/staticimages/Boracay2.jpg">
+            </li>
+            <li onclick="changeBora1()">
+                <img id ="boracay1" src="/public/staticimages/Boracay1.jpg">
+            </li>
+            <li onclick="changeBohol1()">
+                <img id ="bohol1" src="/public/staticimages/Bohol1.jpg">
+            </li>
+            <li onclick="changeNido1()">
+                <img id = "nido1" src="/public/staticimages/ElNido1.png">
+            </li>
+            <li onclick="changeNido2()">
+                <img id = "nido2" src="/public/staticimages/ElNido2.JPG">
+            </li>
+            <li onclick="changeMnl1()">
+                <img id = "manila1" src="/public/staticimages/Manila1.jpg">
+            </li>
+        </ul>
+        </span>
+        <center>
+            <img id = "featured" src="/public/staticimages/Bohol2.jpg" style="border:5px solid #b25266; width:1180px;height:787px;">
+        </center>
+        <br>
+        <span class ="home">
+
+       
+        <h1>A New Destination, A New Dream</h1>
+        <p>
+            Welcome to Travelcations PH! Immerse yourself in a community of adventurers, explorers, and travelers! Travelcations PH is an online platform aggregating reviews and opinions of members on travel destinations specific to the Philippines. 
+            The beautiful archipelago boasts of rich natural beauty in its many spectacular beaches, sunny weather and rich bio-diversity. More than that, the Philippines' unique and complex culture, as exemplified by its people, cuisine and lifestyle, attracts many people to visit the country.
+            We welcome all, tourists and natives to share their experiences and help out new adventurers on the best trips, best hotels, best everything to take! Choose Travelcations PH!
+        </p>
+        </span>
+    </div>
+    
+   
+    <div class ="column feed">
+        <center>
+        <h3>
+            YOU MUST HAVE AN ACCOUNT TO CREATE AND VIEW POSTS!
+        </h3>
+        </center>
+    </div>
+
+</body>
+</html>

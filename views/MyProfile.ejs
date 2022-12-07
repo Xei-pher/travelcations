@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link rel = "stylesheet" href="/public/style.css">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<title><%=profile.firstname%>  <%=profile.lastname%>'s Profile</title>
+</head>
+<body>
+    <nav>
+        <div class="menu-icon">
+        </div>
+        <div class="logo">
+            <img id ="logo" src = "/public/staticimages/logo_transparent.png" >
+        </div>
+        <div class="nav-items">
+            <form action="/homePageLoggedIn/<%=profile.username%>" method="get">
+               <li><button type="submit">Home</button></li>
+            </form>
+            </div>
+            <form action="/searchpost" method="post" id ="searchform">
+                <input type="search" class="search-data" placeholder="Search" name="search" required>
+                <button type="submit">Search</button>
+             </form>
+            <div class="nav-items">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <form action="/aboutpage/<%=profile.username%>" method="get">
+                <li><button type="submit">About Us</button></li>
+                </form>
+                <form action="/myprofile/<%=profile.username%>" method="get">
+                <li><button type="submit">My Profile</button></li>
+                </form>
+                <form action="/homepage1" method="post">
+                <li><button type="submit">Sign Out</button></li>
+                </form>
+             </div>
+    </nav>
+
+<!-- Copy to other pages -->
+    <div class = "column main">
+        <p>
+            <center>
+            <img src="/public/images/<%=profile.profilePic%>" style ="height:300px; width:300px; border-radius:100%; border:2px solid #4dad99">
+            <br>
+            <br>
+            <form action="/editprofilepic/<%=profile.username%>" method="get">
+            <button type="submit">Edit Profile Picture</button>
+            </form>
+            <br>
+            <h1>
+                <%=profile.firstname%>  <%=profile.lastname%>'s Page
+            </h1>
+           <span class ="stats">
+            <ul>
+                <li>
+                    Posts Created:
+                    <br>
+                    <%=profile.postCount%>
+                </li>
+                <li>
+                    Date Joined:
+                    <br>
+                    <%=profile.dateJoin%>
+                </li>
+            </ul>
+           </span>
+            <h5>
+                Contact
+            </h5>
+            <p>
+                Email Address: <%=profile.email%>
+                <br>
+            </p>
+            <h5>
+                About Me
+            </h5>
+            <p>
+                <%=profile.bio%>
+            </p>
+        </p>
+        <form action="/editprofile/<%=profile.username%>" method="get">
+        <button type="submit">Edit Profile</button>
+        </form>
+        </center>
+    </div>
+    <div class = "column feed">
+        <h2>
+            <%=profile.firstname%>  <%=profile.lastname%>'s Posts
+        </h2>
+        <% for (var i in posts){ %>
+        <a href="/viewownpost/<%= posts[i].postID %>">
+        <img src ="/public/images/<%= posts[i].image %>" style = "height:100px; width:100px; border-radius:100%; border:2px solid #4dad99">
+        <%= posts[i].title %> <br>
+         </a>
+         <p class="comment">
+         <span id="contentsample">
+              <%= posts[i].content %>
+        </span></p><br>
+        <% } %>
+        <br>
+    </div>
+</body>
+</html>

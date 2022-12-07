@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link rel = "stylesheet" href="/public/style.css">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<title><%= post.title %></title>
+</head>
+<body>
+    <nav>
+        <div class="menu-icon">
+        </div>
+        <div class="logo">
+            <img id ="logo" src = "/public/staticimages/logo_transparent.png" >
+        </div>
+        <div class="nav-items">
+            <form action="/homePageLoggedIn/<%=cc%>" method="get">
+               <li><button type="submit">Home</button></li>
+            </form>
+            </div>
+            <form action="/searchpost" method="post" id ="searchform">
+                <input type="search" class="search-data" placeholder="Search" name="search" required>
+                <button type="submit">Search</button>
+             </form>
+            <div class="nav-items">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <form action="/aboutpage/<%=cc%>" method="get">
+                    <li><button type="submit">About Us</button></li>
+                    </form>
+                <form action="/user/<%=cc%>" method="get">
+                <li><button type="submit">My Profile</button></li>
+                </form>
+                <form action="/homepage1" method="post">
+                <li><button type="submit">Sign Out</button></li>
+                </form>
+             </div>
+    </nav>
+
+        <span class ="posts">
+            <center>
+                <h1>
+                    <%= post.title %>
+                </h1>
+            </center>
+            <center>
+                <img id ="featured" src="/public/images/<%=post.image%>">
+            </center>
+            <br>
+            <span style="font-size:20px">
+                Rating: <%= post.rating %> Stars ☆
+            </span>
+            <br>
+            <!-- WORK ON THIS -->
+            <span style="font-size:20px">
+                Posted by:
+            <a href="/user/<%= post.author %>" method = "get">
+                <%= post.author %>
+            </a>
+            </span>
+            <h5>
+                <%= post.date %>
+            </h5>
+            <div class="contentcontainer">    
+                <%= post.content %>  
+            </div>
+            <br>
+        </span>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link rel = "stylesheet" href="/public/style.css">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<title>Edit Profile</title>
+</head>
+<body>
+    <nav>
+        <div class="menu-icon">
+        </div>
+        <div class="logo">
+            <img id ="logo" src = "/public/staticimages/logo_transparent.png" >
+        </div>
+        <div class="nav-items">
+            <form action="/homePageLoggedIn/<%=profile.username%>" method="get">
+               <li><button type="submit">Home</button></li>
+            </form>
+            </div>
+            <form action="/searchpost" method="post" id ="searchform">
+                <input type="search" class="search-data" placeholder="Search" name="search" required>
+                <button type="submit">Search</button>
+             </form>
+            <div class="nav-items">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <form action="/aboutpage/<%=profile.username%>" method="get">
+                <li><button type="submit">About Us</button></li>
+                </form>
+                <form action="/myprofile/<%=profile.username%>" method="get">
+                <li><button type="submit">My Profile</button></li>
+                </form>
+                <form action="/homepage1" method="post">
+                <li><button type="submit">Sign Out</button></li>
+                </form>
+             </div>
+    </nav>   
+    
+        <br><br><br><br><br><br>
+        <center>
+        <h1>EDIT PROFILE</h1> 
+        <br>
+        <form action="/editprofileb" method="post">
+            <label for="fname">First Name: </label> 
+            <br>
+            <input type="text" placeholder="Enter First Name" name="fname" required value="<%= profile.firstname %>">
+            <br>
+            <label for="lname">Last Name: </label> 
+            <br>
+            <input type="text" placeholder="Enter Last Name" name="lname" required value="<%= profile.lastname %>">
+            <br>
+            <label for="eaddress">Email Address: </label> 
+            <br>
+            <input type="text" placeholder="Enter Email Address" name="eaddress" required value="<%= profile.email %>">
+            <br>
+            <label for="bio">Bio: </label>
+            <br>
+            <textarea rows = "5" cols = "60" name = "bio" ><%= profile.bio %></textarea>
+            <br>
+            <br>
+            <br>
+            <label for="password">Please re-enter your password: </label>
+            <br> 
+            <input type="password" placeholder="Enter Password" name="password" required>
+            <br>
+            <button type="submit" class ="signin" id="btn1">Save Changes</button>              
+        </form>  
+        </center> 
+    
+</body>
+</html>
