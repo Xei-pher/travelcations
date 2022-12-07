@@ -55,10 +55,10 @@ app.get('/homePageLoggedIn/:username', (req, res) => {
   const username = '"' + req.params.username + '"';
   var sql = "SELECT * FROM user WHERE username = "+ username;
   let query = connection.query(sql, (err, rows) => {
-    if(err) throw err;
+    
     var sql = "SELECT * FROM post";
     let query = connection.query(sql, (err, rowz) => {
-      if(err) throw err;
+      
       res.render('HomePageLoggedIn', {
         profile:rows[0],
         posts: rowz
@@ -71,10 +71,10 @@ app.get('/aboutpage/:username', (req, res) => {
   const username = '"' + req.params.username + '"';
   var sql = "SELECT * FROM user WHERE username = "+ username;
   let query = connection.query(sql, (err, rows) => {
-    if(err) throw err;
+    
     var sql = "SELECT * FROM post";
     let query = connection.query(sql, (err, rowz) => {
-      if(err) throw err;
+      
       res.render('About', {
         cc: currentUser.username,
         profile:rows[0],
@@ -88,7 +88,7 @@ app.get('/createpost/:username', (req, res) => {
   const username = '"' + req.params.username + '"';
   var sql = "SELECT * FROM user WHERE username = "+ username;
   let query = connection.query(sql, (err, rows) => {
-    if(err) throw err;
+    
     res.render('CreatePost', {
       profile:rows[0]
   });
@@ -99,7 +99,7 @@ app.get('/myprofile/:username', (req, res) => {
   const username = '"' + req.params.username + '"';
   var sql = 'SELECT * from user where username = '+ username;
   let query = connection.query(sql, (err, rows) => {
-    if(err) throw err;
+    
     if(rows[0].postCount == 0){
       res.render('MyProfileNoPost', {
         profile:rows[0],
@@ -111,7 +111,7 @@ app.get('/myprofile/:username', (req, res) => {
       WHERE user.username =  
        `+ username;
       let query = connection.query(sql, (err, rows) => {
-        if(err) throw err;
+        
         res.render('MyProfile', {
           profile:rows[0],
           posts:rows
@@ -128,7 +128,7 @@ app.get('/user/:username', (req, res) => {
   WHERE user.username =  
    `+ username;
   let query = connection.query(sql, (err, rows) => {
-    if(err) throw err;
+    
     if(rows[0].username === currentUser.username){
       res.render('MyProfile', {
         profile:rows[0],
@@ -149,7 +149,7 @@ app.get('/editprofile/:username', (req, res) => {
   const username = '"' + req.params.username + '"';
   var sql = "SELECT * FROM user WHERE username = "+ username;
   let query = connection.query(sql, (err, rows) => {
-    if(err) throw err;
+    
     res.render('EditProfile', {
       profile:rows[0]
   });
@@ -160,7 +160,7 @@ app.get('/editprofile/:username', (req, res) => {
   const username = '"' + req.params.username + '"';
   var sql = "SELECT * FROM user WHERE username = "+ username;
   let query = connection.query(sql, (err, rows) => {
-    if(err) throw err;
+    
     res.render('EditProfile', {
       profile:rows[0]
   });
@@ -171,7 +171,7 @@ app.get('/editprofilepic/:username', (req, res) => {
   const username = '"' + req.params.username + '"';
   var sql = "SELECT * FROM user WHERE username = "+ username;
   let query = connection.query(sql, (err, rows) => {
-    if(err) throw err;
+    
     res.render('EditProfilePicture', {
       profile:rows[0]
   });
@@ -182,7 +182,7 @@ app.get('/viewownpost/:postID', (req, res) => {
   const postID = '"' + req.params.postID + '"';
   var sql = "SELECT * FROM post WHERE postID = "+ postID;
   let query = connection.query(sql ,(err, rows) => {
-    if(err) throw err;
+    
     res.render('OwnPost', {
       post:rows[0],
   });
@@ -193,7 +193,7 @@ app.get('/viewpost/:postID', (req, res) => {
   const postID = '"' + req.params.postID + '"';
   var sql = "SELECT * FROM post WHERE postID = "+ postID;
   let query = connection.query(sql ,(err, rows) => {
-    if(err) throw err;
+    
     if(rows[0].author === currentUser.username){
       res.render('OwnPost', {
         post:rows[0],
@@ -225,7 +225,7 @@ app.post("/signupuser", (req, res)=>{
   let data = {username: username, password: crypt, firstname: fname, lastname: lname, email: eaddress, bio: bio, postCount: 0, profilePic: image, dateJoin: dateJoin};
   let sql = "INSERT INTO user SET ?";
   let query = connection.query(sql, data, (err, results) =>{
-      if(err) throw err;
+      
       res.redirect('/');
   });
 });
@@ -246,7 +246,7 @@ app.post("/loginuser", (req, res)=>{
               currentUser.postCount = rows[0].postCount;
               var sql = "SELECT * FROM post";
               let query = connection.query(sql, (err, rowz) => {
-                if(err) throw err;
+                
                 res.render('HomePageLoggedIn', {
                   profile:rows[0],
                   posts: rowz
@@ -275,7 +275,7 @@ app.post("/createpost", upload.single('image'), (req, res)=>{
   newPost.postID = 0;
   var sql = "SELECT * FROM post";
   let query = connection.query(sql, (err, rows) => {
-    if(err) throw err;
+    
     if (rows.length) {
     var lastindex = rows.length-1;
     var latestPostID = rows[lastindex].postID;
@@ -283,18 +283,18 @@ app.post("/createpost", upload.single('image'), (req, res)=>{
     let data = {postID: newPost.postID, title: title, rating: rating, author: author, date: date, content: content, image: image};
     let sql = "INSERT INTO post SET ?";
     let query = connection.query(sql, data, (err, results) =>{
-      if(err) throw err;
+      
       //ADD ALERT/LINK TO POST
       let data = [currentUser.postCount, currentUser.username];
       let sql = "UPDATE user SET postCount = ? WHERE username = ?";
       let query = connection.query(sql, data, (err, results) =>{
-        if(err) throw err;
+        
         var sql = "SELECT * FROM user WHERE username = "+ "'"+ currentUser.username +"'";
         let query = connection.query(sql, (err, rows) => {
-        if(err) throw err;
+        
         var sql = "SELECT * FROM post";
         let query = connection.query(sql, (err, rowz) => {
-          if(err) throw err;
+          
           res.render('HomePageLoggedIn', {
             profile:rows[0],
             posts: rowz
@@ -312,18 +312,18 @@ app.post("/deletepost/:postid", (req, res)=>{
     let data = [req.params.postid];
     let sql = "DELETE FROM post WHERE (postID=?)";
     let query = connection.query(sql, data, (err, results) =>{
-      if(err) throw err;
+      
       //ADD ALERT/LINK TO POST
       let data = [currentUser.postCount, currentUser.username];
       let sql = "UPDATE user SET postCount = ? WHERE username = ?";
       let query = connection.query(sql, data, (err, results) =>{
-        if(err) throw err;
+        
         var sql = "SELECT * FROM user WHERE username = "+ "'"+ currentUser.username +"'";
         let query = connection.query(sql, (err, rows) => {
-        if(err) throw err;
+        
         var sql = "SELECT * FROM post";
         let query = connection.query(sql, (err, rowz) => {
-          if(err) throw err;
+          
           res.render('HomePageLoggedIn', {
             profile:rows[0],
             posts: rowz
@@ -349,10 +349,10 @@ app.post("/editprofileb", (req, res)=>{
             let data = [fname, lname, eaddress, bio, username];
             let sql = "UPDATE user SET firstname = ?, lastname = ?, email = ?, bio = ? WHERE username = ?";
             let query = connection.query(sql, data, (err, results) =>{
-            if(err) throw err;
+            
             var sql = "SELECT * FROM post";
               let query = connection.query(sql, (err, rowz) => {
-                if(err) throw err;
+                
                 res.render('HomePageLoggedIn', {
                   profile:rows[0],
                   posts: rowz
@@ -379,10 +379,10 @@ app.post("/editprofilepic", upload.single('pp'), (req, res)=>{
             let data = [image, currentUser.username];
             let sql = "UPDATE user SET profilePic = ? WHERE username = ?";
             let query = connection.query(sql, data, (err, results) =>{
-              if(err) throw err;
+              
               var sql = "SELECT * FROM post";
               let query = connection.query(sql, (err, rowz) => {
-                if(err) throw err;
+                
                 res.render('HomePageLoggedIn', {
                   profile:rows[0],
                   posts: rowz
