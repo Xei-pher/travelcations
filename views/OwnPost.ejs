@@ -77,6 +77,10 @@
                 
             </div>
             <br>
+            <form action="/editpostpage/<%= post.postID %>" method="get">
+                <button type="submit">Edit Post</button>
+            </form>
+            <br>
             <form action="/deletepost/<%= post.postID %>" method="post">
                 <button type="submit">Delete Post</button>
             </form>
