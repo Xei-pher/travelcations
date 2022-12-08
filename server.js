@@ -163,13 +163,14 @@ app.get('/editprofile/:username', (req, res) => {
 });
 });
 
-app.get('/editprofile/:username', (req, res) => {
-  const username = '"' + req.params.username + '"';
-  var sql = "SELECT * FROM user WHERE username = "+ username;
+app.get('/editpostpage/:postID', (req, res) => {
+  const postID = '"' + req.params.postID + '"';
+  var sql = "SELECT * FROM post WHERE postID = "+ postID;
   let query = connection.query(sql, (err, rows) => {
-    
-    res.render('EditProfile', {
-      profile:rows[0]
+    if(err) throw err;
+    res.render('EditPost', {
+      cc: currentUser.username,
+      post:rows[0]
   });
 });
 });
@@ -370,6 +371,32 @@ app.post("/editprofileb", (req, res)=>{
             res.redirect('/');
           }
       } else {
+        res.redirect('/');
+      }       
+  });
+});
+app.post("/editpostf", (req, res)=>{
+  let username = currentUser.username;
+  var title = req.body.title;
+  var rating = req.body.rating;
+  var content = req.body.content;
+  var postID = req.body.postID;
+  connection.query('SELECT * FROM user WHERE username = ?', [username], function(err, rows) {
+      if (rows.length) {
+            let data = [title, rating, content, postID];
+            let sql = "UPDATE post SET title = ?, rating = ?, content = ? WHERE postID = ?";
+            connection.query(sql, data, (err, results) =>{
+            var sql = "SELECT * FROM post";
+              connection.query(sql, (err, rowz) => {
+                res.render('HomePageLoggedIn', {
+                  profile:rows[0],
+                  posts: rowz
+                });
+              });
+            });
+          
+      } 
+      else {
         res.redirect('/');
       }       
   });
