@@ -48,12 +48,12 @@ html,body{
     height: 40px;
     padding: 2px;
     background: #fff;
-    min-width: 18%!important;
+    min-width: 9%!important;
     border-radius: 2px;
     border: 1px solid rgba(155,155,155,0.2);
   }
   nav form .search-data{
-    width: 500px;
+    width: 200px;
     height: 100%;
     padding: 0 10px;
     color: black;

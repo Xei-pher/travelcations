@@ -422,6 +422,23 @@ app.post("/searchpost", (req, res)=>{
     }       
     });
   });
+  app.post("/searchuser", (req, res)=>{
+    var search = req.body.search;
+      connection.query("SELECT * FROM user WHERE username LIKE '%"+search+"%' OR firstname LIKE '%"+search+"%' OR lastname LIKE '%"+search+"%'", function(err, rows) {
+      if (err) res.redirect('/');
+      if (rows.length) {
+        res.render('SearchResultsUser', {
+          cc: currentUser.username,
+          users:rows
+        });
+      }
+      else{
+        res.render('SearchResultsZeroUser', {
+          cc: currentUser.username,
+        });
+      }       
+    });
+  });
 // CONNECT
 var connection = mysql.createConnection('mysql://root:qit97mz2dKimpH0v2xuY@containers-us-west-151.railway.app:5538/railway');
 
