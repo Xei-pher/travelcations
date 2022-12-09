@@ -1,7 +1,5 @@
 # TRAVELCATIONS
 
-Simple overview of use/purpose.
-
 ## Description
 
 The TRAVELCATIONS Website will aim to serve as a hub for travel ideas as well as
