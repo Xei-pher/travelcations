@@ -15,34 +15,27 @@ regarding the different destinations in the Philippines.
 
 ## Getting Started
 
-### Dependencies
+### HOW TO USE
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
-
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
-
-### Executing program
-
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+1. Install the necessary packages needed for the website:
+* bcrypt
+* body-parser
+* EJS
+* express
+* cookie-session
+* multer
+* mysql
+* path
+* dotenv
+2. Create a MySQL server and finish its setup.
+3. Create a database named "travelcations".
+4. Open the command prompt, type "node server.js, and press enter.
+5. Create an account in the website to use its features.
 
 ## Authors
 
-Contributors names and contact info
+Contributors names
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+* Boado, Seifer Rija
+* Caballero, Don John Daniel
+* Cabingan, Kurt Julian
