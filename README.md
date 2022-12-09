@@ -26,9 +26,10 @@ regarding the different destinations in the Philippines.
 * path
 * dotenv
 2. Create a MySQL server and finish its setup.
-3. Create a database named "travelcations".
-4. Open the command prompt, type "node server.js, and press enter.
-5. Create an account in the website to use its features.
+3. Import the database sql file in the "DB" folder as the database to be used.
+4. Change the mysql connection on server.js to your local database connection.
+5. Open the command prompt, type "node server.js, and press enter.
+6. Create an account in the website to use its features.
 
 ## Authors
 
